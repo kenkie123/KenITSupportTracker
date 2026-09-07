@@ -8,27 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    let tickets: [SupportTicket] = [
-        SupportTicket(
-            title: "Kiosk not printing tickets",
-            issueDescription: "The kiosk responds, but no ticket prints after selecting a service.",
-            requesterName: "Jamie Wilson",
-            location: "Demo Centre - Reception"
-        ),
-        SupportTicket(
-            title: "Queue display not updating",
-            issueDescription: "The screen still shows the previous ticket number.",
-            requesterName: "Morgan Lee",
-            location: "Demo Centre - Waiting Area"
-        ),
-        SupportTicket(
-            title: "Staff member cannot sign in",
-            issueDescription: "A staff member cannot access the queue calling application.",
-            requesterName: "Taylor Brown",
-            location: "Demo Centre - Counter 3"
-        )
-    ]
+    @StateObject private var viewModel = TicketViewModel()
 
     var body: some View {
         NavigationStack {
@@ -38,20 +18,24 @@ struct ContentView: View {
                 }
 
                 Section("Tickets") {
-                    ForEach(tickets) { ticket in
-                        VStack(alignment: .leading) {
-                            Text(ticket.title)
-                                .font(.headline)
+                    ForEach(viewModel.tickets) { ticket in
+                        NavigationLink {
+                            TicketDetailView(ticket: ticket)
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(ticket.title)
+                                    .font(.headline)
 
-                            Text(ticket.location)
-                                .font(.subheadline)
+                                Text(ticket.location)
+                                    .font(.subheadline)
 
                             Text("Status: \(ticket.status.rawValue)")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
                         }
                     }
                 }
+            }
             }
             .navigationTitle("KenSupport")
         }
