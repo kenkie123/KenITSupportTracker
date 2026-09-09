@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct SupportTicket: Identifiable {
-    let id = UUID()
+struct SupportTicket: Identifiable, Codable {
+    var id = UUID()
 
     var title: String
     var issueDescription: String
@@ -16,13 +16,13 @@ struct SupportTicket: Identifiable {
     var location: String
 
     var status: TicketStatus = .open
-    var createdAt: Date = Date()
+    var createdAt = Date()
 
     var technicianName: String?
     var resolutionNotes: String?
 }
 
-enum TicketStatus: String, CaseIterable {
+enum TicketStatus: String, Codable, CaseIterable {
     case open = "Open"
     case inProgress = "In Progress"
     case resolved = "Resolved"

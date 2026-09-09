@@ -8,26 +8,42 @@
 import Foundation
 import Combine
 
+// Holds ticket list, loads it from local storage
 class TicketViewModel: ObservableObject {
+    @Published var tickets: [SupportTicket] = []
+    @Published var errorMessage = ""
+    @Published var showingError = false
 
-    @Published var tickets: [SupportTicket] = [
-        SupportTicket(
-            title: "Kiosk not printing tickets",
-            issueDescription: "The kiosk responds, but no ticket prints after selecting a service.",
-            requesterName: "Jamie Wilson",
-            location: "Demo Centre - Reception"
-        ),
-        SupportTicket(
-            title: "Queue display not updating",
-            issueDescription: "The screen still shows the previous ticket number.",
-            requesterName: "Morgan Lee",
-            location: "Demo Centre - Waiting Area"
-        ),
-        SupportTicket(
-            title: "Staff member cannot sign in",
-            issueDescription: "A staff member cannot access the queue calling application.",
-            requesterName: "Taylor Brown",
-            location: "Demo Centre - Counter 3"
+    private let repository: TicketRepository
+
+    init(repository: TicketRepository = LocalTicketRepository()) {
+        self.repository = repository
+        loadTickets()
+    }
+
+    func loadTickets() {
+        do {
+            tickets = try repository.loadTickets()
+        } catch {
+            errorMessage = error.localizedDescription
+            showingError = true
+        }
+    }
+    
+    func submitTicket(
+        title: String,
+        issueDescription: String,
+        requesterName: String,
+        location: String
+    ) throws {
+        let useCase = SubmitSupportTicketUseCase(repository: repository)
+
+        let ticket = try useCase.execute(
+            title: title,
+            issueDescription: issueDescription,
+            requesterName: requesterName,
+            location: location
         )
-    ]
+        tickets.append(ticket)
+    }
 }
