@@ -24,6 +24,6 @@ struct SupportTicket: Identifiable, Codable {
 
 enum TicketStatus: String, Codable, CaseIterable {
     case open = "Open"
-    case inProgress = "In Progress"
+    case pending = "Pending"
     case resolved = "Resolved"
 }

@@ -24,7 +24,10 @@ struct ContentView: View {
 
                     ForEach(viewModel.tickets) { ticket in
                         NavigationLink {
-                        TicketDetailedView(ticket: ticket)
+                            TicketDetailedView(
+                                viewModel: viewModel,
+                                ticketID: ticket.id
+                            )
                         } label: {
                             VStack(alignment: .leading) {
                             Text(ticket.title)

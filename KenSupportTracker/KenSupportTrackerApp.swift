@@ -13,5 +13,5 @@ struct KenSupportTrackerApp: App {
         WindowGroup {
             ContentView()
         }
-    }
+    } 
 }

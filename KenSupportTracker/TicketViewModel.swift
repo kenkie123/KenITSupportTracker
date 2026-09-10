@@ -46,4 +46,45 @@ class TicketViewModel: ObservableObject {
         )
         tickets.append(ticket)
     }
+    func assignTicket(
+        ticketID: UUID,
+        technicianName: String
+    ) throws {
+        let useCase = AssignSupportTicketUseCase(repository: repository)
+
+        let updatedTicket = try useCase.execute(
+            ticketID: ticketID,
+            technicianName: technicianName
+        )
+
+        if let index = tickets.firstIndex(
+            where: { $0.id == updatedTicket.id }
+        ) {
+            tickets[index] = updatedTicket
+        } else {
+            tickets.append(updatedTicket)
+        }
+    }
+    
+    func resolveTicket(
+        ticketID: UUID,
+        resolutionNotes: String
+    ) throws {
+        let useCase = ResolveSupportTicketUseCase(
+            repository: repository
+        )
+
+        let updatedTicket = try useCase.execute(
+            ticketID: ticketID,
+            resolutionNotes: resolutionNotes
+        )
+
+        if let index = tickets.firstIndex(
+            where: { $0.id == updatedTicket.id }
+        ) {
+            tickets[index] = updatedTicket
+        } else {
+            tickets.append(updatedTicket)
+        }
+    }
 }
