@@ -40,11 +40,6 @@
 			path = KenSupportTrackerTests;
 			sourceTree = "<group>";
 		};
-		439E7C72304ECDEB00DA0F63 /* KenSupportTrackerUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = KenSupportTrackerUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +72,6 @@
 			children = (
 				439E7C5A304ECDE500DA0F63 /* KenSupportTracker */,
 				439E7C68304ECDEB00DA0F63 /* KenSupportTrackerTests */,
-				439E7C72304ECDEB00DA0F63 /* KenSupportTrackerUITests */,
 				439E7C59304ECDE500DA0F63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,9 +146,6 @@
 			);
 			dependencies = (
 				439E7C71304ECDEB00DA0F63 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				439E7C72304ECDEB00DA0F63 /* KenSupportTrackerUITests */,
 			);
 			name = KenSupportTrackerUITests;
 			packageProductDependencies = (
