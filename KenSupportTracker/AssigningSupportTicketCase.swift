@@ -1,10 +1,5 @@
-//
-//  AssigningSupportTicketCase.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/9/26.
-//
 import Foundation
+/// Assigns a technician to an unresolved ticket and sets it to pending. A technician name is required before the assignment can be saved.
 struct AssignSupportTicketUseCase {
     let repository: TicketRepository
 

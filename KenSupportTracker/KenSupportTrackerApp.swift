@@ -1,10 +1,3 @@
-//
-//  KenSupportTrackerApp.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/7/26.
-//
-
 import SwiftUI
 
 @main

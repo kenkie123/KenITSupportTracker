@@ -1,20 +1,11 @@
-//
-//  TicketView.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/7/26.
-//
-
 import SwiftUI
 struct CreateTicketView: View {
     @ObservedObject var viewModel: TicketViewModel
     @Environment(\.dismiss) private var dismiss
-
     @State private var title = ""
     @State private var issueDescription = ""
     @State private var requesterName = ""
     @State private var location = ""
-
     @State private var errorMessage = ""
     @State private var showingError = false
 

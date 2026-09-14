@@ -1,20 +1,12 @@
-//
-//  TicketDetailedView.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/7/26.
-//
 import SwiftUI
 
 struct TicketDetailedView: View {
     @ObservedObject var viewModel: TicketViewModel
     let ticketID: UUID
-
     @State private var technicianName = ""
     @State private var showingError = false
     @State private var errorMessage = ""
     @State private var showingResolution = false
-
     private var ticket: SupportTicket? {
         viewModel.tickets.first { $0.id == ticketID }
     }

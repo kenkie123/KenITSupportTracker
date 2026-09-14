@@ -1,16 +1,8 @@
-//
-//  TicketRepository.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/7/26.
-//
 import Foundation
 protocol TicketRepository {
     func loadTickets() throws -> [SupportTicket]
     func saveTickets(_ tickets: [SupportTicket]) throws
 }
-
-//json
 class LocalTicketRepository: TicketRepository {
     private let fileURL: URL
 
@@ -26,7 +18,6 @@ class LocalTicketRepository: TicketRepository {
     }
 
     func loadTickets() throws -> [SupportTicket] {
-        // no saved register when the app start
         guard FileManager.default.fileExists(atPath: fileURL.path) else {
             return []
         }

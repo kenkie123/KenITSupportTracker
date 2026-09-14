@@ -1,17 +1,8 @@
-//
-//  ResolveTicketView.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/8/26.
-//
 import SwiftUI
-
 struct ResolveTicketView: View {
     @ObservedObject var viewModel: TicketViewModel
     let ticketID: UUID
-
     @Environment(\.dismiss) private var dismiss
-
     @State private var resolutionNotes = ""
     @State private var showingConfirmation = false
     @State private var showingError = false

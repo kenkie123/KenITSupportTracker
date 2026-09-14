@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/7/26.
-//
 import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = TicketViewModel()

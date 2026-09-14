@@ -1,10 +1,6 @@
-//
-//  ResolveTicketCase.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/8/26.
-//
 import Foundation
+
+/// Records the fix and marks an assigned, pending ticket as resolved. Resolution notes are required, and already resolved tickets are rejected.
 struct ResolveSupportTicketUseCase {
     let repository: TicketRepository
 

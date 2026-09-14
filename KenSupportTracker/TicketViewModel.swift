@@ -1,10 +1,3 @@
-//
-//  TicketViewModel.swift
-//  KenSupportTracker
-//
-//  Created by Kenneth Lee on 9/7/26.
-//
-
 import Foundation
 import Combine
 
@@ -37,7 +30,6 @@ class TicketViewModel: ObservableObject {
         location: String
     ) throws {
         let useCase = SubmitSupportTicketUseCase(repository: repository)
-
         let ticket = try useCase.execute(
             title: title,
             issueDescription: issueDescription,
